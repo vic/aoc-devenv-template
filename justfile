@@ -1,34 +1,40 @@
+[private]
 help:
   just -l
 
-rust DAY:
-  just run {{DAY}} rust "cargo run"
+[private]
+tool LANG:
+  #!/usr/bin/env sh
+  case "{{LANG}}" in
+   rust) echo cargo run ;;
+   scala) echo scala-cli run . ;;
+   flix) echo flix run ;;
+   zig) echo zig run ;;
+   *) echo false ;;
+  esac  
 
-rust-watch DAY:
-  just watch {{DAY}} rust "cargo run"
+[private]
+new LANG:
+  #!/usr/bin/env sh
+  case "{{LANG}}" in
+   rust) echo cargo init;;
+   scala) echo touch main.scala;;
+   flix) echo flix init ;;
+   zig) echo zig init-exe;;
+   *) echo false ;;
+  esac  
 
-zig DAY:
-  just run {{DAY}} zig "zig run"
+init LANG DAY:
+  #!/usr/bin/env sh
+  mkdir -p day{{DAY}}/{{LANG}}
+  cd day{{DAY}}/{{LANG}}
+  $(just new {{LANG}})
+  aoc download --day {{DAY}}
 
-zig-watch DAY:
-  just watch {{DAY}} zig "zig run"
+run LANG DAY:
+  cd day{{DAY}}/{{LANG}} && $(just -q tool {{LANG}})
 
-scala DAY:
-  just run {{DAY}} scala "scala-cli run ."
-
-scala-watch DAY:
-  just watch {{DAY}} scala "scala-cli run ."
-
-flix DAY:
-  just run {{DAY}} flix "flix run"
-
-flix-watch DAY:
-  just watch {{DAY}} flix "flix run"
-
-run DAY LANG TOOL:
-  cd day{{DAY}}/{{LANG}} && {{TOOL}}
-
-watch DAY LANG TOOL:
-  watchexec --watch day{{DAY}}/{{LANG}} --workdir day{{DAY}}/{{LANG}} --restart --clear reset {{TOOL}}
+watch LANG DAY:
+  watchexec --watch day{{DAY}}/{{LANG}} --workdir day{{DAY}}/{{LANG}} --restart --clear reset $(just -q tool {{LANG}})
   
 
