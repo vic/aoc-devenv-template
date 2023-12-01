@@ -1,5 +1,7 @@
 # Template for starting Advent Of Code using Nix devenv.
 
+<a href="https://asciinema.org/a/tYHsdJCdEG9kmt03iOjUeaejH" target="_blank"><img src="https://asciinema.org/a/tYHsdJCdEG9kmt03iOjUeaejH.svg" /></a>
+
 * [Install Nix](https://github.com/DeterminateSystems/nix-installer)
 
 * Enable the [Languages](https://devenv.sh/languages/#supported-languages) you are using
