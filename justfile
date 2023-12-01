@@ -3,14 +3,15 @@ help:
   just -l
 
 [private]
-tool LANG:
+tool LANG DAY:
   #!/usr/bin/env sh
+  cd day{{DAY}}/{{LANG}}
   case "{{LANG}}" in
-   rust) echo cargo run ;;
-   scala) echo scala-cli run . ;;
-   flix) echo flix run ;;
-   zig) echo zig run ;;
-   *) echo false ;;
+   rust) cargo run ;;
+   scala) scala-cli run . ;;
+   flix) flix run ;;
+   zig) zig run ;;
+   *) false ;;
   esac  
 
 
@@ -51,9 +52,9 @@ init LANG DAY:
   just -q new {{LANG}} {{DAY}}
 
 run LANG DAY:
-  cd day{{DAY}}/{{LANG}} && $(just -q tool {{LANG}})
+  cd day{{DAY}}/{{LANG}} && just -q tool {{LANG}} {{DAY}}
 
 watch LANG DAY:
-  watchexec --watch day{{DAY}}/{{LANG}} --workdir day{{DAY}}/{{LANG}} --restart --clear reset $(just -q tool {{LANG}})
+  watchexec --watch day{{DAY}}/{{LANG}} --workdir day{{DAY}}/{{LANG}} --restart --clear reset just -q tool {{LANG}} {{DAY}}
   
 
