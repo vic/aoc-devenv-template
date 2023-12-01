@@ -17,7 +17,8 @@ tool LANG:
 [private]
 scala-new DAY:
   #!/usr/bin/env sh
-  cat <<-EOF > day{{DAY}}/scala/Main.scala
+  cd day{{DAY}}/scala
+  cat <<-EOF > Main.scala
   package aoc.day{{DAY}}
   object Main extends App { println("Hello day{{DAY}}") }
   EOF
@@ -25,6 +26,7 @@ scala-new DAY:
 [private]
 new LANG DAY:
   #!/usr/bin/env sh
+  cd day{{DAY}}/{{LANG}}
   case "{{LANG}}" in
    rust) 
      cargo init --name "day{{DAY}}"
