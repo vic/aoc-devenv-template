@@ -7,6 +7,12 @@ rust DAY:
 rust-watch DAY:
   just watch {{DAY}} rust "cargo run"
 
+zig DAY:
+  just run {{DAY}} zig "zig run"
+
+zig-watch DAY:
+  just watch {{DAY}} zig "zig run"
+
 scala DAY:
   just run {{DAY}} scala "scala-cli run ."
 
