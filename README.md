@@ -32,6 +32,9 @@
 
   Use `just watch <lang> <day>` to run your project on changes.
 
-  
+
+* Submit your answer.
+
+  Use `aoc submit --day <DAY> <PART> <ANSWER>`  
 
 
