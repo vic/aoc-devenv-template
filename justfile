@@ -56,7 +56,7 @@ run-zig DAY:
   zig run
 
 [private]
-run-fix DAY:
+run-flix DAY:
   #!/usr/bin/env sh
   cd day{{DAY}}/flix
   flix run
