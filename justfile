@@ -1,6 +1,12 @@
 help:
   just -l
 
+rust DAY:
+  just run {{DAY}} rust "cargo run"
+
+rust-watch DAY:
+  just watch {{DAY}} rust "cargo run"
+
 scala DAY:
   just run {{DAY}} scala "scala-cli run ."
 
