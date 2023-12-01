@@ -90,6 +90,18 @@
         "type": "github"
       }
     },
+    "flix-jar": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-icdpTcfy9OlaXjRoqCAkiJa3mCdpGKguO8OavrAEXgY=",
+        "type": "file",
+        "url": "https://github.com/flix/flix/releases/download/v0.42.0/flix.jar"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/flix/flix/releases/download/v0.42.0/flix.jar"
+      }
+    },
     "gitignore": {
       "inputs": {
         "nixpkgs": [
@@ -302,6 +314,7 @@
       "inputs": {
         "devenv": "devenv",
         "flake-parts": "flake-parts",
+        "flix-jar": "flix-jar",
         "mk-shell-bin": "mk-shell-bin",
         "nix2container": "nix2container",
         "nixpkgs": "nixpkgs_2"
